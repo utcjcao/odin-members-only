@@ -11,7 +11,9 @@
         <a href="/logout">LOG OUT</a>
       <% } else { %>
         <h1>log in</h1>
+    
         <div>
+            <%= message %>
         </div>
         <form action="/login" method="POST">
             <label for="username">Username</label>

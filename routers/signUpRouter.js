@@ -32,7 +32,6 @@ signUpRouter.get("", async (req, res) => {
 signUpRouter.post("", validateInput, async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    console.log(errors.array()[0]);
     return res.render("signup", {
       message: errors.array()[0].msg,
     });

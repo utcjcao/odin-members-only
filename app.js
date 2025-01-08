@@ -8,6 +8,7 @@ const { secretRouter } = require("./routers/secretRouter");
 const { indexRouter } = require("./routers/indexRouter");
 const { messageRouter } = require("./routers/messageRouter");
 const { logOutRouter } = require("./routers/logoutRouter");
+const flash = require("connect-flash");
 
 const app = new express();
 
@@ -18,14 +19,21 @@ const assetsPath = path.join(__dirname, "public");
 app.use(express.static(assetsPath));
 app.use(express.urlencoded({ extended: true }));
 
-app.use(session({ secret: "cats", resave: false, saveUninitialized: false }));
+app.use(
+  session({
+    secret: "cats",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(flash());
 
 app.use("/signup", signUpRouter);
 app.use("/login", logInRouter);
 app.use("/logout", logOutRouter);
-
 app.use("/secret", secretRouter);
 app.use("/message", messageRouter);
 app.use("/", indexRouter);

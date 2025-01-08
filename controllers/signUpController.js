@@ -13,8 +13,6 @@ class signUpController {
       const hashedPassword = await bcryptjs.hash(req.body.password, 10);
 
       const isUserRegistered = await registerUser(
-        req.body.firstName,
-        req.body.lastName,
         req.body.username,
         hashedPassword
       );
