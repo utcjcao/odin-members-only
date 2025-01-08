@@ -17,7 +17,7 @@ app.use(express.static(assetsPath));
 app.use(express.urlencoded({ extended: true }));
 
 app.use(session({ secret: "cats", resave: false, saveUninitialized: false }));
-// app.use(passport.initialize());
+app.use(passport.initialize());
 app.use(passport.session());
 
 app.use("/signup", signUpRouter);

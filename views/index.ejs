@@ -6,9 +6,9 @@
     <title></title>
 </head>
 <body>
-    <% if (user) {%>
+    <% if (locals.user) {%>
     <h1>WELCOME BACK <%= user.username %></h1>
-    <a href="/log-out">LOG OUT</a>
+    <a href="/logout">LOG OUT</a>
     <% } else { %>
     <div>no user rn</div>
     <%}%>

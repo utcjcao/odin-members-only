@@ -2,6 +2,7 @@ const session = require("express-session");
 const passport = require("passport");
 const pool = require("../db/pool");
 const LocalStrategy = require("passport-local").Strategy;
+const bcrypt = require("bcryptjs");
 
 passport.use(
   new LocalStrategy(async (username, password, done) => {

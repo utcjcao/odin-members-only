@@ -1,4 +1,4 @@
-const passport = require("passport");
+const passport = require("../passport/passport");
 
 class logInController {
   constructor() {}
@@ -6,11 +6,18 @@ class logInController {
     // get user login page
     res.render("login", { user: req.user });
   };
-  postLogIn = async (req, res) => {
-    passport.authenticate("local", {
-      successRedirect: "/secret",
-      failureRedirect: "/secret",
-    });
+  postLogIn = (req, res) => {
+    console.log("reached postlogin");
+    try {
+      passport.authenticate("local", {
+        successRedirect: "/secret",
+        failureRedirect: "/secret",
+      });
+      console.log("done");
+    } catch (err) {
+      console.log(err);
+    }
+
     // res.render("index", { user: req.user });
   };
 }

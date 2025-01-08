@@ -8,17 +8,18 @@
 <body>
     <% if (locals.user) {%>
         <h1>already logged in <%= user.username %></h1>
-        <a href="/log-out">LOG OUT</a>
+        <a href="/logout">LOG OUT</a>
       <% } else { %>
         <h1>log in</h1>
         <div>
         </div>
-    <form action="/login" method="POST">
-        <input type="text" name="username" placeholder="username">
-        <input type="password" name="password" placeholder="password">
-        <button type="submit">
-            submit
-        </button>
+        <form action="/login" method="POST">
+            <label for="username">Username</label>
+            <input id="username" name="username" placeholder="username" type="text" />
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" />
+            <button>Log In</button>
+          </form>
     </form>
     <%}%>
 </body>
