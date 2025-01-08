@@ -12,6 +12,9 @@
     "passport-local": "^1.0.0",
     "pg": "^8.13.1"
   },
+  "name": "odin-members-only",
+  "version": "1.0.0",
+  "main": "app.js",
 "scripts": {
     "populatedb": "node db/populatedb.js",
     "start": "node app.js"
