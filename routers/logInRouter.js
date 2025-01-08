@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { postLogIn, getLogInPage } = require("../controllers/loginController");
+const { postLogIn, getLogInPage } = require("../controllers/logInController");
 const passport = require("../passport/passport");
 const flash = require("connect-flash");
 const logInRouter = Router();
