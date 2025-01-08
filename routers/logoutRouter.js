@@ -1,9 +1,9 @@
 const { Router } = require("express");
-const { postLogOut } = require("../controllers/logOutController");
+const { postLogOut } = require("../controllers/loginController");
 
 const logOutRouter = Router();
 
-logOutRouter.postLogOut("", async (req, res) => {
+logOutRouter.get("", async (req, res) => {
   await postLogOut(req, res);
 });
 

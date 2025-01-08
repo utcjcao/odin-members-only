@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>log in</title>
+</head>
+<body>
+    <% if (locals.user) {%>
+        <%= message %>
+        <form action="/message" method="POST">
+            <label for="title">title</label>
+            <input id="title" name="title" type="text" />
+            <label for="message">message</label>
+            <input id="message" name="message" type="text" />
+            <button>Log In</button>
+        </form>
+      <% } else { %>
+        <div> 
+            you need to login
+        </div>
+        
+    <%}%>
+</body>
+</html>

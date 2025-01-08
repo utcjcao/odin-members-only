@@ -1,17 +1,53 @@
-<!-- input: membership status,  -->
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title></title>
 </head>
 <body>
-    <% if (locals.user) {%>
-    <h1>WELCOME BACK <%= user.username %></h1>
-    <a href="/logout">LOG OUT</a>
-    <% } else { %>
-    <div>no user rn</div>
-    <%}%>
+    <% if (locals.user) { %>  <!-- First check if locals.user exists -->
+        <% if (locals.user.admin) { %>  <!-- If user exists, check if they are admin -->
+            <h1>WELCOME BACK <%= locals.user.username %></h1>
+            <h1>Messages</h1>
+            <div class="messages-container">
+                <% messages.forEach(function(message) { %>
+                    <div class="message">
+                        <h2><%= message.title %></h2>
+                        <p><%= message.message %></p>
+                        <p><strong>Created At:</strong> <%= message.created_at %></p>
+                        <p><strong>Created By:</strong> <%= message.created_by %></p>
+                    </div>
+                <% }); %>
+            </div>
+            <form action="/message/delete/<%= message.id %>" method="POST">
+                <button>Delete message</button>
+            </form>        
+            <a href="/logout">LOG OUT</a>
+        <% } else { %>  <!-- If user exists but not admin -->
+            <h1>WELCOME BACK <%= locals.user.username %></h1>
+            <h1>Messages</h1>
+            <div class="messages-container">
+                <% messages.forEach(function(message) { %>
+                    <div class="message">
+                        <h2><%= message.title %></h2>
+                        <p><%= message.message %></p>
+                        <p><strong>Created At:</strong> <%= message.created_at %></p>
+                        <p><strong>Created By:</strong> <%= message.created_by %></p>
+                    </div>
+                <% }); %>
+            </div>
+            <a href="/logout">LOG OUT</a>
+        <% } %>
+    <% } else { %>  <!-- If no user exists -->
+        <div class="messages-container">
+            <% messages.forEach(function(message) { %>
+                <div class="message">
+                    <h2><%= message.title %></h2>
+                    <p><%= message.message %></p>
+                </div>
+            <% }); %>
+        </div>
+        <div>No user currently logged in.</div>
+    <% } %>
 </body>
 </html>
-    

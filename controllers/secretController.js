@@ -1,4 +1,4 @@
-const { changeMembership } = require("../db/queries");
+const { changeMembership, changeAdmin } = require("../db/queries");
 
 class secretController {
   constructor() {}
@@ -10,6 +10,9 @@ class secretController {
     const userInput = req.body.secret;
     if (userInput === "charmander") {
       await changeMembership(req.user.username, true);
+    }
+    if (userInput === "bulbasaur") {
+      await changeAdmin(req.user.username, true);
     }
     res.render("secret", { user: req.user });
   };

@@ -11,8 +11,8 @@ logInRouter.get("", async (req, res) => {
 logInRouter.post(
   "",
   passport.authenticate("local", {
-    successRedirect: "/secret",
-    failureRedirect: "/secret",
+    successRedirect: "/",
+    failureRedirect: "/",
   })
 );
 

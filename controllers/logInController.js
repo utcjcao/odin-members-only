@@ -6,19 +6,14 @@ class logInController {
     // get user login page
     res.render("login", { user: req.user });
   };
-  postLogIn = (req, res) => {
-    console.log("reached postlogin");
-    try {
-      passport.authenticate("local", {
-        successRedirect: "/secret",
-        failureRedirect: "/secret",
-      });
-      console.log("done");
-    } catch (err) {
-      console.log(err);
-    }
-
-    // res.render("index", { user: req.user });
+  postLogIn = (req, res) => {}; // uneeded b/c we just put the middleware in directly
+  postLogOut = async (req, res) => {
+    req.logout((err) => {
+      if (err) {
+        return next(err);
+      }
+      res.redirect("/");
+    });
   };
 }
 

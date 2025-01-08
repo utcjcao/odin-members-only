@@ -1,9 +1,9 @@
 const pool = require("./pool");
 
-async function registerUser(firstName, lastName, username, password) {
+async function registerUser(username, password) {
   const query =
-    "INSERT INTO users (firstName, lastName, username, password, membership_status) VALUES ($1, $2, $3, $4, $5);";
-  const values = [firstName, lastName, username, password, 0];
+    "INSERT INTO users (username, password, membership_status, admin) VALUES ($1, $2, $3, $4);";
+  const values = [username, password, 0, 0];
   try {
     await pool.query(query, values);
   } catch (error) {
@@ -43,6 +43,12 @@ async function changeMembership(username, membership_status) {
   await pool.query(query, values);
 }
 
+async function changeAdmin(username, admin_status) {
+  const query = "UPDATE users SET admin = $2 WHERE username = $1;";
+  const values = [username, admin_status];
+  await pool.query(query, values);
+}
+
 module.exports = {
   registerUser,
   findUser,
@@ -50,4 +56,5 @@ module.exports = {
   postMessage,
   deleteMessage,
   changeMembership,
+  changeAdmin,
 };

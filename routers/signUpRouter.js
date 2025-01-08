@@ -8,18 +8,6 @@ const {
 const signUpRouter = Router();
 
 const validateInput = [
-  body("firstName")
-    .trim()
-    .notEmpty()
-    .withMessage("First name can not be empty.")
-    .isAlpha()
-    .withMessage("First name must only contain alphabet letters."),
-  body("lastName")
-    .trim()
-    .notEmpty()
-    .withMessage("Last name can not be empty.")
-    .isAlpha()
-    .withMessage("Last name must only contain alphabet letters."),
   body("username").trim().notEmpty().withMessage("username can not be empty."),
   body("password")
     .trim()
@@ -46,7 +34,7 @@ signUpRouter.post("", validateInput, async (req, res) => {
   if (!errors.isEmpty()) {
     console.log(errors.array()[0]);
     return res.render("signup", {
-      error: errors.array()[0].msg,
+      message: errors.array()[0].msg,
     });
   }
   //   write post for signup

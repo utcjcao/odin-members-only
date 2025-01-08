@@ -6,6 +6,8 @@ const { signUpRouter } = require("./routers/signUpRouter");
 const { logInRouter } = require("./routers/logInRouter");
 const { secretRouter } = require("./routers/secretRouter");
 const { indexRouter } = require("./routers/indexRouter");
+const { messageRouter } = require("./routers/messageRouter");
+const { logOutRouter } = require("./routers/logoutRouter");
 
 const app = new express();
 
@@ -22,7 +24,10 @@ app.use(passport.session());
 
 app.use("/signup", signUpRouter);
 app.use("/login", logInRouter);
+app.use("/logout", logOutRouter);
+
 app.use("/secret", secretRouter);
+app.use("/message", messageRouter);
 app.use("/", indexRouter);
 
 const PORT = process.env.PORT || 3000;
