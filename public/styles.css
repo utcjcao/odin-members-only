@@ -1,0 +1,92 @@
+body {
+    font-family: monospace;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+}
+.page-header a {
+    color: white;
+    text-decoration: none;
+}
+
+.page-header a:hover {
+    color: greenyellow;
+}
+
+.messages-container {
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    padding: 20px;
+}
+
+.message {
+    border: 1px solid black;
+    padding: 20px;
+}
+
+.message-info {
+    display: flex;
+    gap: 20px;
+}
+
+.new-input-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+}
+
+input#title {
+    width: 100%;
+}
+
+textarea#message {
+    width: 100%;
+    height: 300px;
+}
+
+.login-error-container {
+    display: flex;
+    padding: 20px;
+    
+}
+
+.login-container, .signup-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-form, .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+button {
+    background-color: white;
+    border: none;
+    transition: color 1s;
+}
+
+button:hover {
+    color: blue
+}
+
+.delete-message-form {
+    display: flex;
+    justify-content: end;
+}

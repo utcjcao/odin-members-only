@@ -23,7 +23,7 @@ logInRouter.post("", (req, res, next) => {
       if (err) {
         return next(err);
       }
-      return res.redirect("index");
+      return res.redirect("/");
     });
   })(req, res, next);
 });

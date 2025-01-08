@@ -3,25 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>log in</title>
+    <title>login</title>
+    <link rel="stylesheet" href="styles.css">
+
 </head>
 <body>
     <% if (locals.user) {%>
-        <h1>already logged in <%= user.username %></h1>
-        <a href="/logout">LOG OUT</a>
-      <% } else { %>
-        <h1>log in</h1>
-    
-        <div>
-            <%= message %>
+        <div class="login-error-container"> 
+            <span>you're already logged in!</span>
         </div>
-        <form action="/login" method="POST">
-            <label for="username">Username</label>
-            <input id="username" name="username" placeholder="username" type="text" />
-            <label for="password">Password</label>
-            <input id="password" name="password" type="password" />
-            <button>Log In</button>
-        </form>
+      <% } else { %>
+        <div class="login-container">
+            <h1>log in</h1>
+            <div>
+                <%= message %>
+            </div>
+            <form class="login-form" action="/login" method="POST">
+                <input id="username" name="username" placeholder="username" type="text"/>
+                <input id="password" name="password" placeholder="password" type="password" />
+                <button>Log In</button>
+            </form>
+        </div>
     <%}%>
 </body>
 </html>

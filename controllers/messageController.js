@@ -21,6 +21,7 @@ class messageController {
 
   deleteMessage = async (req, res) => {
     await deleteMessage(req.params.id);
+    res.redirect("/");
   };
 }
 

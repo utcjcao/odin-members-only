@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>log in</title>
+    <title>new message</title>
+    <link rel="stylesheet" href="styles.css">
+
 </head>
 <body>
+    <%- include('components/header', {user: user}); %>
     <% if (locals.user) {%>
         <%= message %>
-        <form action="/message" method="POST">
-            <label for="title">title</label>
-            <input id="title" name="title" type="text" />
-            <label for="message">message</label>
-            <input id="message" name="message" type="text" />
-            <button>Log In</button>
+        <form action="/message" method="POST" class="new-input-container">
+            <input id="title" name="title" type="text" placeholder="title"/>
+            <textarea id="message" name="message" type="text" placeholder="message"></textarea>
+            <button>submit</button>
         </form>
       <% } else { %>
-        <div> 
-            you need to login
+        <div class="login-error-container"> 
+            <span>you need to <a href="/login">login</a> first!</span>
         </div>
-        
     <%}%>
 </body>
 </html>

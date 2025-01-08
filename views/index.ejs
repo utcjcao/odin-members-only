@@ -2,52 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <% if (locals.user) { %>  <!-- First check if locals.user exists -->
-        <% if (locals.user.admin) { %>  <!-- If user exists, check if they are admin -->
-            <h1>WELCOME BACK <%= locals.user.username %></h1>
-            <h1>Messages</h1>
-            <div class="messages-container">
-                <% messages.forEach(function(message) { %>
-                    <div class="message">
-                        <h2><%= message.title %></h2>
-                        <p><%= message.message %></p>
-                        <p><strong>Created At:</strong> <%= message.created_at %></p>
-                        <p><strong>Created By:</strong> <%= message.created_by %></p>
+    <%- include('components/header', {user: user}); %>
+    <div class="messages-container">
+        <% messages.forEach(function(message) { %>
+            <div class="message">
+                <h2><%= message.title %></h2>
+                <p><%= message.message %></p>
+                <% if (locals.user) { %>  <!-- First check if locals.user exists -->
+                    <div class="message-info">
+                        <p><strong><%= message.created_by %></strong>, <%= message.created_at %> </p>
                     </div>
-                <% }); %>
+                    <% if (locals.user.admin) { %>
+                        <form action="/message/delete/<%= message.id %>" class="delete-message-form" method="POST">
+                            <button>Delete message</button>
+                        </form> 
+                    <% }; %>
+                <% }; %>
             </div>
-            <form action="/message/delete/<%= message.id %>" method="POST">
-                <button>Delete message</button>
-            </form>        
-            <a href="/logout">LOG OUT</a>
-        <% } else { %>  <!-- If user exists but not admin -->
-            <h1>WELCOME BACK <%= locals.user.username %></h1>
-            <h1>Messages</h1>
-            <div class="messages-container">
-                <% messages.forEach(function(message) { %>
-                    <div class="message">
-                        <h2><%= message.title %></h2>
-                        <p><%= message.message %></p>
-                        <p><strong>Created At:</strong> <%= message.created_at %></p>
-                        <p><strong>Created By:</strong> <%= message.created_by %></p>
-                    </div>
-                <% }); %>
-            </div>
-            <a href="/logout">LOG OUT</a>
-        <% } %>
-    <% } else { %>  <!-- If no user exists -->
-        <div class="messages-container">
-            <% messages.forEach(function(message) { %>
-                <div class="message">
-                    <h2><%= message.title %></h2>
-                    <p><%= message.message %></p>
-                </div>
-            <% }); %>
-        </div>
-        <div>No user currently logged in.</div>
-    <% } %>
+        <% }); %>
+    </div>
 </body>
 </html>
