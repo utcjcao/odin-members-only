@@ -6,7 +6,6 @@ const bcrypt = require("bcryptjs");
 
 passport.use(
   new LocalStrategy(async (username, password, done) => {
-    console.log("local strat");
     try {
       const { rows } = await pool.query(
         "SELECT * FROM users WHERE username = $1",
@@ -39,7 +38,6 @@ passport.deserializeUser(async (id, done) => {
       id,
     ]);
     const user = rows[0];
-    console.log(user);
 
     done(null, user);
   } catch (err) {

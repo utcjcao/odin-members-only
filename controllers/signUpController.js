@@ -18,8 +18,6 @@ class signUpController {
       );
 
       if (isUserRegistered === "success") {
-        console.log("success");
-
         res.render("signup", {
           message: "your account has been created! you can login now",
           user: req.user,
@@ -28,7 +26,6 @@ class signUpController {
         res.render("signup", { message: isUserRegistered, user: req.user });
       }
     } catch (error) {
-      console.error("Error during sign up:", error);
       res.render("signup", { message: error.msg, user: req.user });
     }
   };

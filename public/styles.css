@@ -56,10 +56,10 @@ textarea#message {
     height: 300px;
 }
 
-.login-error-container {
+.login-error-container, .secret-container {
     display: flex;
     padding: 20px;
-    
+    gap: 20px;
 }
 
 .login-container, .signup-container {

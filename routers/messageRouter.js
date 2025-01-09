@@ -17,7 +17,6 @@ messageRouter.post("", async (req, res) => {
 });
 
 messageRouter.post("/delete/:id", async (req, res) => {
-  console.log("heylo");
   await deleteMessage(req, res);
 });
 

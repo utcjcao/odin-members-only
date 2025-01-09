@@ -9,7 +9,7 @@ const expressSession = require("express-session");
 const SessionStore = require("express-session-sequelize")(expressSession.Store);
 
 const { signUpRouter } = require("./routers/signUpRouter");
-const { loginRouter } = require("./routers/logInRouter");
+const { loginRouter } = require("./routers/loginRouter");
 const { secretRouter } = require("./routers/secretRouter");
 const { indexRouter } = require("./routers/indexRouter");
 const { messageRouter } = require("./routers/messageRouter");
@@ -17,6 +17,7 @@ const { logOutRouter } = require("./routers/logoutRouter");
 const flash = require("connect-flash");
 
 const Sequelize = require("sequelize");
+const { populatedb } = require("./db/populatedb");
 const myDatabase = new Sequelize(
   process.env.POSTGRES_DB,
   process.env.PGUSER,
@@ -26,6 +27,12 @@ const myDatabase = new Sequelize(
     dialect: "postgres",
   }
 );
+
+try {
+  populatedb();
+} catch (error) {
+  console.log("table making error");
+}
 
 const sequelizeSessionStore = new SessionStore({
   db: myDatabase,

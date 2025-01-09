@@ -14,8 +14,8 @@ async function makeTables() {
   await pool.query(initTablesSql, []);
 }
 
-async function main() {
+async function populatedb() {
   await makeTables();
 }
 
-main();
+module.exports = { populatedb };
