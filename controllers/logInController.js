@@ -1,6 +1,6 @@
 const passport = require("../passport/passport");
 
-class logInController {
+class loginController {
   constructor() {}
   getLogInPage = async (req, res) => {
     // get user login page
@@ -17,4 +17,4 @@ class logInController {
   };
 }
 
-module.exports = new logInController();
+module.exports = new loginController();
