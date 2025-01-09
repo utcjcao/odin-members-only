@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { postLogOut } = require("../controllers/loginController");
+const { postLogOut } = require("../controllers/logInController");
 
 const logOutRouter = Router();
 
