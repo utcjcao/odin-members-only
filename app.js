@@ -9,7 +9,7 @@ const expressSession = require("express-session");
 const SessionStore = require("express-session-sequelize")(expressSession.Store);
 
 const { signUpRouter } = require("./routers/signUpRouter");
-const { loginRouter } = require("./routers/logInRouter");
+const { logInRouter } = require("./routers/logInRouter");
 const { secretRouter } = require("./routers/secretRouter");
 const { indexRouter } = require("./routers/indexRouter");
 const { messageRouter } = require("./routers/messageRouter");
@@ -61,7 +61,7 @@ app.use(passport.session());
 app.use(flash());
 
 app.use("/signup", signUpRouter);
-app.use("/login", loginRouter);
+app.use("/login", logInRouter);
 app.use("/logout", logOutRouter);
 app.use("/secret", secretRouter);
 app.use("/message", messageRouter);

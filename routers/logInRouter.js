@@ -1,14 +1,14 @@
 const { Router } = require("express");
 const { getLogInPage } = require("../controllers/loginController");
 const passport = require("../passport/passport");
-const loginRouter = Router();
+const logInRouter = Router();
 
-loginRouter.get("", async (req, res) => {
+logInRouter.get("", async (req, res) => {
   await getLogInPage(req, res);
 });
 
 // Your login route where passport is used
-loginRouter.post("", (req, res, next) => {
+logInRouter.post("", (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
     if (err) {
       return next(err);
@@ -27,4 +27,4 @@ loginRouter.post("", (req, res, next) => {
   })(req, res, next);
 });
 
-module.exports = { loginRouter };
+module.exports = { logInRouter };
